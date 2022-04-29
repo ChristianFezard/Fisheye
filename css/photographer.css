@@ -31,6 +31,10 @@
     justify-content: space-between;
     padding: 35px;
     margin: auto;
+    box-shadow: -5px 10px 30px #bfbfbf;
+    position: fixed;
+    top: 150px;
+    left: 300px;
 }
 
 .modal header {
