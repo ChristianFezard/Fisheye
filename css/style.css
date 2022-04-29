@@ -45,9 +45,19 @@ h1 {
     margin-bottom: 0;
 }
 
+.photographer_section article a {
+    text-decoration: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
 .photographer_section article img {
     height: 200px;
     width: 200px;
+    border-radius: 50%;
+    object-fit: cover;
 }
 .city{
     color: #D3573C;
