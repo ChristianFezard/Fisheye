@@ -9,7 +9,7 @@
   </head>
   <body>
     <header>
-      <img src="assets/images/logo.png" class="logo" />
+      <a href="index.html"><img src="assets/images/logo.png" class="logo" /></a>
     </header>
     <main id="main">
       <div class="photograph-header">
@@ -20,23 +20,28 @@
 			<div class="modal">
 				<header>
           <h2>Contactez-moi</h2>
-          <img src="assets/icons/close.svg" onclick="closeModal()" />
+          <img src="assets/icons/close.svg" alt="Close Contact form" onclick="closeModal()" />
         </header>
-				<form>
+				<form name="contact" method="post" id="contactForm" action="photographer.html">
 					<div>
-						<label>Prénom</label>
-						<input />
-            <label>Nom</label>
-            <input />
-            <label>Email</label>
-            <input />
-            <label>Votre message</label>
-            <input />
+						<label for="first name">Prénom</label>
+						<input id="first_name" type="text" aria-label="First name"/>
+            <span id="error-message-first-name" class="error-message"></span>
+            <label for="last name">Nom</label>
+            <input id="last_name" type="text" aria-label="Last name"/>
+            <span id="error-message-last-name" class="error-message"></span>
+            <label for="email">Email</label>
+            <input id="email" type="email" aria-label="Email"/>
+            <span id="error-message-email" class="error-message"></span>
+            <label for="message">Votre message</label>
+            <input id="message" type="text" aria-label="Your message"/>
+            <span id="error-message-first-name" class="error-message"></span>
 					</div>
-          <button class="contact_button">Envoyer</button>
+          <button type="submit" class="contact_button" aria-label="Send">Envoyer</button>
 				</form>
 			</div>
 		</div>
+    <script src="/scripts/utils/contactForm.js"></script>
     <script src="/scripts/utils/contactForm.js"></script>
   </body>
 </html>
