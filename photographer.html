@@ -1,10 +1,13 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <link href="css/style.css" rel="stylesheet" type="text/css" />
+    <link href="css/photographer.css" rel="stylesheet" type="text/css" />
     <meta charset="utf-8">
     <link rel="icon" type="image/png" href="assets/favicon.png">
     <link href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" 
+    integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" 
+    crossorigin="anonymous">
     <title>Fisheye - photographe </title>
   </head>
   <body>
@@ -12,14 +15,38 @@
       <a href="index.html"><img src="assets/images/logo.png" class="logo" /></a>
     </header>
     <main id="main">
-      <div class="photograph-header">
+      <div class="photograph-header" id="header">
+        <div class="photographer_description" id="profile">
+          
+        </div>
         <button class="contact_button" onclick="displayModal()">Contactez-moi</button>
       </div>
+      <div class="content"></div>
     </main>
+    <div class="filter">
+      <p>Trier par</p>
+      <button id="select-first-option" class="select-option">
+        <span id="select-first-option-text">Popularité</span>
+      </button>
+      <div id="select-block-options">
+        <button  class="select-option">
+           Date
+        </button>
+        <button  class="select-option">
+           Titre
+        </button>
+      </div>  
+    </div>
+    <section class="media_gallery">
+    </section>
+    <div class="heart_n_price">
+      <div class="popularity">297 081<i class="fas fa-heart"></i></div>
+      <div class="price">300€ / jour</div>
+    </div>
     <div id="contact_modal">
 			<div class="modal">
-				<header>
-          <h2>Contactez-moi</h2>
+				<header id="contact_me">
+          <h2></h2>
           <img src="assets/icons/close.svg" alt="Close Contact form" onclick="closeModal()" />
         </header>
 				<form name="contact" method="post" id="contactForm" action="photographer.html">
@@ -41,7 +68,8 @@
 				</form>
 			</div>
 		</div>
+    <script src="/scripts/pages/photographer.js"></script>
     <script src="/scripts/utils/contactForm.js"></script>
-    <script src="/scripts/utils/contactForm.js"></script>
+    <script src="/scripts/factories/mediasFactory.js"></script>
   </body>
 </html>

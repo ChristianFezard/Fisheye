@@ -1,3 +1,17 @@
+*,::after,::before{
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "DM Sans", sans-serif;
+    margin: 0;
+}
+
+.logo {
+    height: 50px;
+    margin: 50px 100px;
+}
+
 #contact_modal {
     display: none;
     position: fixed;
@@ -14,6 +28,9 @@
     background-color: #FAFAFA;
     height: 300px;
     margin: 0 100px;
+    padding: 50px;
+    display: flex;
+    justify-content: space-between;
 }
 
 .contact_button {
@@ -27,6 +44,9 @@
     background-color: #901C1C;
     border-radius: 5px;
     cursor: pointer;
+    margin-right: 150px;
+    align-self: center;
+    margin: 0 auto;
 }
 
 .modal {
@@ -46,6 +66,7 @@
 }
 
 .modal header {
+    display: flex;
     justify-content: space-between;
     width: 100%;
 }
@@ -55,7 +76,7 @@
 }
 
 .modal header h2 {
-    font-size: 64px;
+    font-size: 50px;
     font-weight: normal;
     text-align: center;
 }
@@ -85,4 +106,128 @@ form input {
     height: 68px;
     border: none;
     border-radius: 5px;
+}
+
+/*integration html + css*/
+
+.name{
+    font-size: 50px;
+}
+
+.photographer_id{
+    height: 200px;
+    width: 200px;
+    border-radius: 50%;
+    object-fit: cover;
+    display: inline-block;
+    justify-content: center;
+    align-items: flex-end;
+}
+
+h1{
+    margin: 0;
+    color: #DB8876;
+}
+
+.city{
+    font-size: larger;
+    color: #901C1C;
+}
+
+.filter{
+    margin: 20px 100px;
+    display: flex;
+    font-weight: bold;
+}
+
+#select-first-option span::after{
+  
+    content:" ^ ";
+    display:inline-block;
+    vertical-align:bottom;
+    position:absolute;
+    transform:translate3d(0, -50%, 0) scale(1.5, 1.5);
+    right:15px;
+    top:55%;
+    
+  
+}
+
+.select-option{
+    width:170px;
+    border:none;
+    background:#911C1C;
+    color:#ffffff;
+    position:relative;
+    display:block;
+    border:1px solid #ffffff;
+    cursor:pointer;
+    height:60px;
+}
+
+#select-block-options{
+  
+    display:none;
+  
+}
+.list{
+    margin-left: 20px;
+    color: white;
+    background-color: #901C1C;
+    border: none;
+    border-radius: 5px;
+    padding: 15px 10px;
+}
+
+.media_gallery{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    margin: 50px 100px;
+    gap: 100px;
+}
+
+.media_cards img, .media_cards video{
+    width: 500px;
+    height: 400px;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+.bottom_line{
+    font-size: larger;
+    font-weight: bold;
+    color: #901C1C;
+    padding: 10px 0;
+    display: flex;
+    justify-content: space-between;
+}
+
+.media_cards span{
+    display: inline-block;
+}
+
+.heart_n_price{
+    position: fixed;
+    z-index: 2;
+    bottom: 0;
+    right: 20px;
+    display: flex;
+    border: 1px solid #DB8876;
+    background-color: #DB8876;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    padding:10px 0px;
+    font-weight: bold;
+}
+
+.popularity{
+    margin: 0 20px;
+}
+
+.price{
+    margin: 0 20px;
+}
+
+.fas{
+    margin-left: 5px;
 }
