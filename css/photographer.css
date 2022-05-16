@@ -62,6 +62,7 @@ body {
     margin: auto;
     box-shadow: -5px 10px 30px #bfbfbf;
     position: relative;
+    z-index: 2;
     top: 50px;
 }
 
@@ -153,8 +154,12 @@ h1{
   
 }
 
+.filter p{
+    margin-right: 20px;
+}
+
 .select-option{
-    width:170px;
+    width:120px;
     border:none;
     background:#911C1C;
     color:#ffffff;
@@ -163,6 +168,8 @@ h1{
     border:1px solid #ffffff;
     cursor:pointer;
     height:60px;
+    font-weight: bold;
+    border-radius: 5px;
 }
 
 #select-block-options{
@@ -191,6 +198,7 @@ h1{
     height: 400px;
     object-fit: cover;
     border-radius: 10px;
+    cursor: pointer;
 }
 
 .bottom_line{
@@ -208,7 +216,7 @@ h1{
 
 .heart_n_price{
     position: fixed;
-    z-index: 2;
+    z-index: 1;
     bottom: 0;
     right: 20px;
     display: flex;
@@ -220,14 +228,94 @@ h1{
     font-weight: bold;
 }
 
-.popularity{
-    margin: 0 20px;
-}
-
+.popularity,
 .price{
     margin: 0 20px;
 }
 
+.popularity{
+    border: none;
+    background: #DB8876;
+    font-weight: bold;
+    font-family: "DM Sans", sans-serif;
+    font-size: 16px;
+    cursor: pointer;
+}
+
 .fas{
     margin-left: 5px;
+}
+
+/***************CSS LIGHTBOX*************/
+
+.lightbox{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(196, 196, 196, 0.4);
+    z-index: 2;
+    overflow: auto;
+    animation: lightBoxIn .5s;
+}
+
+.lightbox_next,
+.lightbox_prev{
+    border: none;
+    background: url(/assets/icons/arrow.svg) center center / 30px 48px no-repeat;
+    width: 50px;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    right: 0;
+    margin-top: -14px;
+    z-index: 3;
+}
+
+.lightbox_prev{
+    right: auto;
+    left: 0;
+    transform: rotate(180deg);
+}
+
+.lightbox_close{
+    border: none;
+    background: url(/assets/icons/redclose.svg) center center / 42px 42px;
+    width: 25px;
+    height: 25px;
+    position: fixed;
+    top: 20px;
+    right: 15px;
+    z-index: 4;
+}
+
+.lightbox button{
+    opacity: 0.5;
+    cursor: pointer;
+    transition: opacity .3s;
+    text-indent: -3000px;
+}
+
+.lightbox button:hover{
+    opacity: 1;
+}
+
+.lightbox_image img{
+    max-width: 100%;
+    height: auto;
+    animation: lightBoxIn .5s;
+}
+
+.lightbox_image{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 100px;
+    min-height: 100vh;
+}
+
+@keyframes lightBoxIn{
+    from {opacity : 0;}
+    to {opacity: 1;}
 }

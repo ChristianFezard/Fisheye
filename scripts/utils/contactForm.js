@@ -13,15 +13,15 @@ let form = document.querySelector('#contactForm');
 //validate first name
 
 function validFirstName() {
-const firstNameValue = document.getElementById('first_name').value;
-const errorFirstName = document.querySelector("#error-message-first-name");
+    const firstNameValue = document.getElementById('first_name').value;
+    const errorFirstName = document.querySelector("#error-message-first-name");
 
-if(firstNameValue.length < 2) {
-    return errorFirstName.textContent = "Veuillez entrer 2 caractères ou plus pour le champ du prénom.";
-}
-errorFirstName.textContent = "";
-return true;
-};
+    if(firstNameValue.length < 2) {
+        return errorFirstName.textContent = "Veuillez entrer 2 caractères ou plus pour le champ du prénom.";
+    }
+    errorFirstName.textContent = "";
+    return true;
+    };
 
 // Validate last name
 

@@ -29,7 +29,7 @@
         <span id="select-first-option-text">Popularité</span>
       </button>
       <div id="select-block-options">
-        <button  class="select-option">
+        <button class="select-option">
            Date
         </button>
         <button  class="select-option">
@@ -40,13 +40,16 @@
     <section class="media_gallery">
     </section>
     <div class="heart_n_price">
-      <div class="popularity">297 081<i class="fas fa-heart"></i></div>
+      <button class="popularity">
+        <span id="count">297081</span>
+        <i class="fas fa-heart"></i>
+      </button>
       <div class="price">300€ / jour</div>
     </div>
     <div id="contact_modal">
 			<div class="modal">
 				<header id="contact_me">
-          <h2></h2>
+          <h2>Contactez-moi</h2>
           <img src="assets/icons/close.svg" alt="Close Contact form" onclick="closeModal()" />
         </header>
 				<form name="contact" method="post" id="contactForm" action="photographer.html">
@@ -71,5 +74,6 @@
     <script src="/scripts/pages/photographer.js"></script>
     <script src="/scripts/utils/contactForm.js"></script>
     <script src="/scripts/factories/mediasFactory.js"></script>
+    <script src="/scripts/utils/lightbox.js" defer></script>
   </body>
 </html>
