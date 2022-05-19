@@ -43,6 +43,11 @@ document.addEventListener("DOMContentLoaded", ()=>{
             header.appendChild(profilePicture);
             profilePicture.classList.add("photographer_id");
 
+            //afficher les prix des photographes
+
+            const rate = document.querySelector('.price');
+            rate.textContent = photographerInfos?.price+"€/jour";
+
             // afficher le nom dans la modal contact
 
             const contactHead = document.querySelector('#contact_me');
@@ -57,7 +62,7 @@ document.addEventListener("DOMContentLoaded", ()=>{
             const photographerMedia = mediaArray.filter((media)=>{
                  return Number(urlId) === Number(media.photographerId);
             });
-            return displayMedias(photographerMedia);            
+            return displayMedias(photographerMedia);           
       }
 
       // fonction affichage des [media] via DOMbuild
@@ -70,13 +75,19 @@ document.addEventListener("DOMContentLoaded", ()=>{
                     ${mediasFactory(media)}
                     <div class="bottom_line">
                     <span>${media.title}</span>
-                    <div class="photo_like">${media.likes}<i class="fas fa-heart"></i></div>
+                    <button class="photo_like">${media.likes}<i class="fas fa-heart"></i></button>
                     </div>
                  </div>
                  `;
             });
             document.querySelector(".media_gallery").innerHTML = MEDIAHTML;
       }
+
+      // fonction like des photos/videos
+
+        const likeMedia = document.querySelectorAll('.photo_like');
+        let likes = media?.likes;
+        console.log(likes);
 
       // affichage des filtres
       
@@ -119,19 +130,21 @@ document.addEventListener("DOMContentLoaded", ()=>{
 });
 
 
-// fonction like 
+// fonction like de la page
 
 const likeBtn = document.querySelector('.popularity');
-let count = document.querySelector('#count');
+let count = document.getElementById('count');
 
-let clicked = false;
+let like = 297081;
+count.innerHTML = like;
 
 likeBtn.addEventListener("click", () => {
-        if (!clicked) {
-            clicked = true;
-            count.textContent++;
-        }
-        clicked = false;
-        count.textContent--;
+        if (like == 297081) {
+            like++;
+            count.innerHTML = like;
+        } else if (like > 297081) {
+            like--;
+            count.innerHTML = like;
+        } 
 });
 

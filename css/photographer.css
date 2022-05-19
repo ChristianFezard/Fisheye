@@ -258,6 +258,7 @@ h1{
     z-index: 2;
     overflow: auto;
     animation: lightBoxIn .5s;
+    transition: opacity .3s;
 }
 
 .lightbox_next,
@@ -313,6 +314,10 @@ h1{
     justify-content: center;
     margin: 0 100px;
     min-height: 100vh;
+}
+
+.lightbox.closing{
+    opacity: 0;
 }
 
 @keyframes lightBoxIn{
