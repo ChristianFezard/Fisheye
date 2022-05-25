@@ -64,7 +64,7 @@ document.addEventListener("DOMContentLoaded", ()=>{
             });
             return displayMedias(photographerMedia);           
       }
-
+      
       // fonction affichage des [media] via DOMbuild
 
       function displayMedias(photographerMediaArray){
@@ -81,13 +81,19 @@ document.addEventListener("DOMContentLoaded", ()=>{
                  `;
             });
             document.querySelector(".media_gallery").innerHTML = MEDIAHTML;
-      }
 
-      // fonction like des photos/videos
+      // Lightbox
 
-        const likeMedia = document.querySelectorAll('.photo_like');
-        let likes = media?.likes;
-        console.log(likes);
+            const medias = document.querySelectorAll(".article_media");
+            medias.forEach((media, index)=>{
+                media.addEventListener("click", ()=>{
+                lightBox(photographerMediaArray, index);
+                });
+            });
+      };
+
+
+
 
       // affichage des filtres
       
@@ -127,6 +133,33 @@ document.addEventListener("DOMContentLoaded", ()=>{
                     };               
                 });
         }
+
+        // fonction des filtres
+        // par date
+
+            const dateFilter = document.querySelector('.per_date');
+            const date = [media.date];
+            dateFilter.addEventListener('click', ()=>{
+                date.sort((a,b)=>{
+                    return a-b;
+                });
+            });
+
+
+        // par titre
+
+        // par likes
+
+        function sortBylike(button){
+            const dateFilter = document.querySelector('.per_title');
+            const date = [media.likes];
+            dateFilter.addEventListener('click', ()=>{
+                date.sort((a,b)=>{
+                    return a-b;
+                });
+            });
+        }
+
 });
 
 

@@ -1,21 +1,101 @@
 //LIGHTBOX
 
-// creation d'une classe pour initialiser la lightbox via tous les liens photos et videos
+// fonction, ouverture de la lightbox via tous les liens photos et videos
 
-class Lightbox {
+function openLightbox(){
+    return document.querySelector('.lightbox').style.display = "block";
+}
 
-    static init(){
-        const links = Array.from(document.querySelectorAll('a[href$=".jpg"], a[href$=".mp4"]'));
-        const gallery = links.map( link => link.getAttribute('href'));
-        console.log(links);
-        console.log(gallery);
-            links.forEach(link => link.addEventListener('click', e => {
-                e.preventDefault();
-                new Lightbox(e.currentTarget.getAttribute('href'), gallery);
-            }));
-    };
+function closeLightbox(){
+    return document.querySelector('.lightbox').style.display = "none";
+}
 
-    constructor(url) {
+// fonction lightbox 
+
+function lightBox(contentArray, mediaIndex){
+
+    const mediaClicked = contentArray[mediaIndex]; 
+
+    openLightbox();  
+    lightHTML(mediaClicked);
+
+    // assignation de focntion a chaque flêche
+
+    const arrows = document.querySelectorAll('#arrows');
+    arrows.forEach((arrow)=>{
+        arrow.addEventListener("click", ()=>{
+            if(arrow.classList.contains("lightbox_next") === true){
+                next();
+            }
+            if(arrow.classList.contains("lightbox_prev") === true){
+                prev();
+            }
+            console.log(arrow.classList);
+        });
+    });
+
+    // fermeture via la croix
+
+    document.querySelector('.lightbox_close').addEventListener('click', closeLightbox);
+
+    // image suivante
+
+    function next(){
+
+        const title = document.querySelector('.lightbox_media_title').textContent;
+        const nIndex = contentArray.findIndex((media)=>{
+            return media.title === title;
+        });
+        
+        if (nIndex < contentArray.length - 1) {
+            return lightHTML(contentArray[nIndex + 1]);
+        }
+        return false;
+    }
+
+    // image précédente
+
+    function prev(){
+        const title = document.querySelector('.lightbox_media_title').textContent;
+        const nIndex = contentArray.findIndex((media)=>{
+            return media.title === title;
+        });
+        
+        if (nIndex > 0){
+            return lightHTML(contentArray[nIndex - 1]);
+        }
+        return false;
+    }
+
+    // structure HTML de la lightbox
+
+    function lightHTML (media) {
+        const lightContainer = document.querySelector('.lightbox');
+        lightContainer.innerHTML = `
+        <button class="lightbox_close">Fermer</button>
+        <button class="lightbox_next" id="arrows">Suivant</button>
+        <button class="lightbox_prev" id="arrows">Précédent</button>
+        <div class="lightbox_image">
+        ${mediasFactory(media)}
+        <div class="lightbox_media_title">${media.title}</div
+        </div>`;
+        if(media.video !== undefined){
+            const lightImage = document.querySelector(".lightbox_image");
+            lightImage.document.querySelector('#lightbox_video').setAttribute("controls", true);
+        }
+        return false;
+    }
+
+    // fonction accessibilité clavier
+
+    //function controlKey (e){
+        //if (e.key === 'escape'){
+          //closeLightbox()
+        //}
+    //}
+
+}
+    /*constructor(url) {
         this.element = this.lightHTML(url);
         document.body.appendChild(this.element);
     };
@@ -28,40 +108,14 @@ class Lightbox {
         this.url = url;
         image.src = url;
         document.addEventListener('escapeBtn', this.escapeBtn);
-    }
+    };
 
 
     // fermeture de la lightbox
 
-    close (e){
-        e.preventDefault();
-        this.element.classList.add('closing');
-        window.setTimeout(() => {
-            this.element.parentElement.removeChild(this.element);
-        }, 500);
-    };
 
-    // image suivante
 
-    next (e){
-        e.preventDefault();
-        let i = this.images.findIndex(image => image == this.url);
-        if (i == this.images.length - 1) {
-            i = -1;
-        }
-        this.loadImage(this.images[i + 1]);
-    }
 
-    // image précédente
-
-    prev (e){
-        e.preventDefault();
-        let i = this.images.findIndex(image => image == this.url);
-        if (i == 0) {
-            i = this.images.length;
-        }
-        this.loadImage(this.images[i - 1]);
-    }
 
         // fonction au clavier
 
@@ -75,24 +129,5 @@ class Lightbox {
             }
         };
 
-    // structure HTML de la lightbox
 
-    lightHTML (url) {
-        const lightContainer = document.createElement('div');
-        lightContainer.classList.add('lightbox');
-        lightContainer.innerHTML = `
-        <button class="lightbox_close">Fermer</button>
-        <button class="lightbox_next">Suivant</button>
-        <button class="lightbox_prev">Précédent</button>
-        <div class="lightbox_image"></div>`;
-        dom.querySelector('.lightbox_close').addEventListener('click', this.close.bind(this));
-        dom.querySelector('.lightbox_next').addEventListener('click', this.next.bind(this));
-        dom.querySelector('.lightbox_prev').addEventListener('click', this.prev.bind(this));
-        return lightContainer;
-    };
-
-};
-
-//initialisation de la lightbox
-
-Lightbox.init();
+*/

@@ -170,6 +170,7 @@ h1{
     height:60px;
     font-weight: bold;
     border-radius: 5px;
+    z-index: 2;
 }
 
 #select-block-options{
@@ -249,6 +250,7 @@ h1{
 /***************CSS LIGHTBOX*************/
 
 .lightbox{
+    display: none;
     position: fixed;
     top: 0;
     left: 0;
@@ -295,14 +297,15 @@ h1{
     opacity: 0.5;
     cursor: pointer;
     transition: opacity .3s;
-    text-indent: -3000px;
+    text-indent: -9999px;
 }
 
 .lightbox button:hover{
     opacity: 1;
 }
 
-.lightbox_image img{
+.lightbox_image img,
+.article_media{
     max-width: 100%;
     height: auto;
     animation: lightBoxIn .5s;
@@ -310,14 +313,12 @@ h1{
 
 .lightbox_image{
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
-    margin: 0 100px;
+    margin: 20px 100px;
     min-height: 100vh;
-}
-
-.lightbox.closing{
-    opacity: 0;
+    object-fit: cover;
 }
 
 @keyframes lightBoxIn{

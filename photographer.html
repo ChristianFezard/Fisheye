@@ -22,58 +22,59 @@
         <button class="contact_button" onclick="displayModal()">Contactez-moi</button>
       </div>
       <div class="content"></div>
+      <div class="filter">
+        <p>Trier par</p>
+        <button id="select-first-option" class="select-option">
+          <span id="select-first-option-like">Popularité</span>
+        </button>
+        <div id="select-block-options">
+          <button id="per_date" class="select-option">
+            Date
+          </button>
+          <button id="per_title" class="select-option">
+            Titre
+          </button>
+        </div>  
+      </div>
+      <section class="media_gallery">
+      </section>
+      <div class="heart_n_price">
+        <button class="popularity">
+          <span id="count"></span>
+          <i class="fas fa-heart"></i>
+        </button>
+        <div class="price"></div>
+      </div>
+      <div id="contact_modal">
+        <div class="modal">
+          <header id="contact_me">
+            <h2>Contactez-moi</h2>
+            <img src="assets/icons/close.svg" alt="Close Contact form" onclick="closeModal()" />
+          </header>
+          <form name="contact" method="post" id="contactForm" action="photographer.html">
+            <div>
+              <label for="first name">Prénom</label>
+              <input id="first_name" type="text" aria-label="First name"/>
+              <span id="error-message-first-name" class="error-message"></span>
+              <label for="last name">Nom</label>
+              <input id="last_name" type="text" aria-label="Last name"/>
+              <span id="error-message-last-name" class="error-message"></span>
+              <label for="email">Email</label>
+              <input id="email" type="email" aria-label="Email"/>
+              <span id="error-message-email" class="error-message"></span>
+              <label for="message">Votre message</label>
+              <input id="message" type="text" aria-label="Your message"/>
+              <span id="error-message-first-name" class="error-message"></span>
+            </div>
+            <button type="submit" class="contact_button" aria-label="Send">Envoyer</button>
+          </form>
+        </div>
+      </div>
+      <div class="lightbox"></div>
     </main>
-    <div class="filter">
-      <p>Trier par</p>
-      <button id="select-first-option" class="select-option">
-        <span id="select-first-option-text">Popularité</span>
-      </button>
-      <div id="select-block-options">
-        <button class="select-option">
-           Date
-        </button>
-        <button  class="select-option">
-           Titre
-        </button>
-      </div>  
-    </div>
-    <section class="media_gallery">
-    </section>
-    <div class="heart_n_price">
-      <button class="popularity">
-        <span id="count"></span>
-        <i class="fas fa-heart"></i>
-      </button>
-      <div class="price"></div>
-    </div>
-    <div id="contact_modal">
-			<div class="modal">
-				<header id="contact_me">
-          <h2>Contactez-moi</h2>
-          <img src="assets/icons/close.svg" alt="Close Contact form" onclick="closeModal()" />
-        </header>
-				<form name="contact" method="post" id="contactForm" action="photographer.html">
-					<div>
-						<label for="first name">Prénom</label>
-						<input id="first_name" type="text" aria-label="First name"/>
-            <span id="error-message-first-name" class="error-message"></span>
-            <label for="last name">Nom</label>
-            <input id="last_name" type="text" aria-label="Last name"/>
-            <span id="error-message-last-name" class="error-message"></span>
-            <label for="email">Email</label>
-            <input id="email" type="email" aria-label="Email"/>
-            <span id="error-message-email" class="error-message"></span>
-            <label for="message">Votre message</label>
-            <input id="message" type="text" aria-label="Your message"/>
-            <span id="error-message-first-name" class="error-message"></span>
-					</div>
-          <button type="submit" class="contact_button" aria-label="Send">Envoyer</button>
-				</form>
-			</div>
-		</div>
     <script src="/scripts/pages/photographer.js"></script>
     <script src="/scripts/utils/contactForm.js"></script>
     <script src="/scripts/factories/mediasFactory.js"></script>
-    <script src="/scripts/utils/lightbox.js" defer></script>
+    <script src="/scripts/utils/lightbox.js"></script>
   </body>
 </html>
