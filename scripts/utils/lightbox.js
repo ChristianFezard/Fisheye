@@ -25,12 +25,10 @@ function lightBox(contentArray, mediaIndex){
     arrows.forEach((arrow)=>{
         arrow.addEventListener("click", ()=>{
             if(arrow.classList.contains("lightbox_next") === true){
-                next();
+                return next();
             }
-            if(arrow.classList.contains("lightbox_prev") === true){
-                prev();
-            }
-            console.log(arrow.classList);
+                return prev();
+            
         });
     });
 
@@ -41,12 +39,13 @@ function lightBox(contentArray, mediaIndex){
     // image suivante
 
     function next(){
-
+        
         const title = document.querySelector('.lightbox_media_title').textContent;
+        
         const nIndex = contentArray.findIndex((media)=>{
             return media.title === title;
         });
-        
+
         if (nIndex < contentArray.length - 1) {
             return lightHTML(contentArray[nIndex + 1]);
         }
@@ -67,67 +66,34 @@ function lightBox(contentArray, mediaIndex){
         return false;
     }
 
+    // Gestion au clavier
+
+    document.addEventListener("keydown", (event)=>{
+        if(event.key === "Escape"){
+            return closeLightbox();
+        }
+        if(event.key === "ArrowRight"){
+            return next();
+        }
+        if(event.key === "ArrowLeft"){
+            return prev();
+        }
+    });
+
     // structure HTML de la lightbox
 
     function lightHTML (media) {
-        const lightContainer = document.querySelector('.lightbox');
+        const lightContainer = document.querySelector('.lightbox_content');
         lightContainer.innerHTML = `
-        <button class="lightbox_close">Fermer</button>
-        <button class="lightbox_next" id="arrows">Suivant</button>
-        <button class="lightbox_prev" id="arrows">Précédent</button>
         <div class="lightbox_image">
         ${mediasFactory(media)}
-        <div class="lightbox_media_title">${media.title}</div
-        </div>`;
+        </div>
+        <div class="lightbox_media_title">${media.title}</div>
+        `;
         if(media.video !== undefined){
             const lightImage = document.querySelector(".lightbox_image");
             lightImage.document.querySelector('#lightbox_video').setAttribute("controls", true);
         }
         return false;
     }
-
-    // fonction accessibilité clavier
-
-    //function controlKey (e){
-        //if (e.key === 'escape'){
-          //closeLightbox()
-        //}
-    //}
-
 }
-    /*constructor(url) {
-        this.element = this.lightHTML(url);
-        document.body.appendChild(this.element);
-    };
-
-    loadImage (url) {
-        this.url = null;
-        const image = new Image();
-        const container = this.element.querySelector('.lightbox_image');
-        container.innerHTML = '';
-        this.url = url;
-        image.src = url;
-        document.addEventListener('escapeBtn', this.escapeBtn);
-    };
-
-
-    // fermeture de la lightbox
-
-
-
-
-
-        // fonction au clavier
-
-        escapeBtn (e) {
-            if (e.key == 'escape') {
-                this.close(e)
-            } else if (e.key == 'ArrowLeft') {
-                this.prev(e)
-            } else if (e.key == 'ArrowRight') {
-                this.next(e)
-            }
-        };
-
-
-*/

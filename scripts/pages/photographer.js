@@ -13,6 +13,50 @@ document.addEventListener("DOMContentLoaded", ()=>{
       }).then((result)=>{
             displayPhotographerInfos(result.photographers);
             getPhotographerMedia(result.media);
+            console.log(result.media);
+
+                        // affichage des filtres
+            
+            let isOpen = false;
+            const selectOptions = document.querySelector("#select-block-options");
+            const firstButtonText = document.querySelector("#select-first-option-text");
+            const optionsButtons = selectOptions.querySelectorAll("button");
+            document.querySelector("#select-first-option").addEventListener("click", ()=>{
+                        if(isOpen === false){
+                
+                    // On ouvre le faux select
+                    
+                    selectOptions.style.display = "block";            
+                    isOpen = true;             
+                    return handleButtonsOptions();        
+                }       
+                if(isOpen === true){        
+                        return closeSelect();       
+                }
+            });
+
+                function closeSelect(){
+
+                        // On ferme le faux select
+                            
+                    selectOptions.style.display = "none";          
+                    return isOpen = false;
+                }
+
+                function handleButtonsOptions(){
+                    optionsButtons.forEach((button)=>{               
+                            button.onclick = ()=>{                  
+                                const buttonText = button.textContent;                         
+                                button.innerHTML = firstButtonText.textContent;                         
+                                firstButtonText.innerHTML = buttonText;
+                                filterMedias(buttonText, result.media); 
+                                console.log(filterMedias);                                 
+                                return closeSelect();               
+                            };               
+                        });
+                }
+                
+                
       });
 
     // fonction récuperation du tableau [photographers] lié a l'id du photographe
@@ -91,93 +135,25 @@ document.addEventListener("DOMContentLoaded", ()=>{
                 });
             });
       };
-
-
-
-
-      // affichage des filtres
-      
-      let isOpen = false;
-      const selectOptions = document.querySelector("#select-block-options");
-      const firstButtonText = document.querySelector("#select-first-option-text");
-      const optionsButtons = selectOptions.querySelectorAll("button");
-      document.querySelector("#select-first-option").addEventListener("click", ()=>{
-				if(isOpen === false){
-         
-             // On ouvre le faux select
-             
-             selectOptions.style.display = "block";            
-             isOpen = true;             
-             return handleButtonsOptions();        
-        }       
-        if(isOpen === true){        
-        		 return closeSelect();       
-        }
-      });
-
-        function closeSelect(){
-
-                // On ferme le faux select
-                    
-            selectOptions.style.display = "none";          
-            return isOpen = false;
-        }
-
-        function handleButtonsOptions(){
-            optionsButtons.forEach((button)=>{               
-                    button.onclick = ()=>{                  
-                        const buttonText = button.textContent;                         
-                        button.innerHTML = firstButtonText.textContent;                         
-                        firstButtonText.innerHTML = buttonText;                                   
-                        return closeSelect();               
-                    };               
-                });
-        }
-
-        // fonction des filtres
-        // par date
-
-            const dateFilter = document.querySelector('.per_date');
-            const date = [media.date];
-            dateFilter.addEventListener('click', ()=>{
-                date.sort((a,b)=>{
-                    return a-b;
-                });
-            });
-
-
-        // par titre
-
-        // par likes
-
-        function sortBylike(button){
-            const dateFilter = document.querySelector('.per_title');
-            const date = [media.likes];
-            dateFilter.addEventListener('click', ()=>{
-                date.sort((a,b)=>{
-                    return a-b;
-                });
-            });
-        }
-
 });
 
 
 // fonction like de la page
 
-const likeBtn = document.querySelector('.popularity');
-let count = document.getElementById('count');
+async function likeMedia() {
 
-let like = 297081;
-count.innerHTML = like;
+    //Recuparation des boutons like + la zone total des likes
 
-likeBtn.addEventListener("click", () => {
-        if (like == 297081) {
-            like++;
-            count.innerHTML = like;
-        } else if (like > 297081) {
-            like--;
-            count.innerHTML = like;
-        } 
-});
+    const likeIt = document.querySelectorAll("photo_like");
+    const totalBottomLike = document.querySelector(".popularity");
+
+    likeIt.forEach(function(heart){
+        heart.addEventListener("click", function(){
+        let likeNum = heart.parentNode.children[0];
+        likeNum.innerHTML = parseInt(likeNum.innerHTML) + 1;
+        totalBottomLike.innerHTML = parseInt(totalBottomLike.innerHTML) + 1;
+        });
+    });
+}
+likeMedia();
 
