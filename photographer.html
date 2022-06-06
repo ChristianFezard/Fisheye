@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="fr">
   <head>
     <link href="css/photographer.css" rel="stylesheet" type="text/css" />
     <meta charset="utf-8">
@@ -9,33 +9,32 @@
     integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" 
     crossorigin="anonymous">
     <title>Fisheye - photographe </title>
+    <meta name="description" content="Pro-photographers' book website"/>
   </head>
   <body>
-    <header>
-      <a href="index.html"><img src="assets/images/logo.png" class="logo" /></a>
+    <header role="banner">
+      <a href="index.html"><img src="assets/images/logo.png" class="logo" alt="FishEye Homepage"/></a>
     </header>
     <main id="main">
       <div class="photograph-header" id="header">
         <div class="photographer_description" id="profile">
           
         </div>
-        <button class="contact_button" onclick="displayModal()">Contactez-moi</button>
+        <button class="contact_button" onclick="displayModal()" aria-haspopup="Filter Option" aria-expanded="false">Contactez-moi</button>
       </div>
       <div class="content"></div>
       <div class="filter">
         <p>Trier par</p>
-        <button id="select-first-option" class="select-option">
-          <span id="select-first-option-text">Popularité</span>
-          <i class="fas fa-angle-up"></i>
-        </button>
-        <div id="select-block-options">
-          <button class="select-option">
-            Date
+        <div class="btn_filter">
+          <button id="select-first-option" class="select-option">
+            <span id="select-first-option-text">Popularité</span>
+            <i class="fas fa-angle-up"></i>
           </button>
-          <button ² class="select-option">
-            Titre
-          </button>
-        </div>  
+          <div id="select-block-options">
+            <button class="select-option">Date</button>
+            <button class="select-option">Titre</button>
+          </div>
+        </div> 
       </div>
       <section class="media_gallery">
       </section>
@@ -52,6 +51,7 @@
             <h2>Contactez-moi</h2>
             <img src="assets/icons/close.svg" alt="Close Contact form" onclick="closeModal()" />
           </header>
+          <p class="photographer_name"></p>
           <form name="contact" method="post" id="contactForm" action="photographer.html">
             <div>
               <label for="first name">Prénom</label>
@@ -63,18 +63,18 @@
               <label for="email">Email</label>
               <input id="email" type="email" aria-label="Email"/>
               <span id="error-message-email" class="error-message"></span>
-              <label for="message">Votre message</label>
-              <input id="message" type="text" aria-label="Your message"/>
+              <label for="textarea">Votre message</label>
+              <textarea id="message" class="insert_message" type="text" cols="45" rows="5" aria-labelledby="Your message"></textarea>
               <span id="error-message-first-name" class="error-message"></span>
             </div>
             <button type="submit" class="contact_button" aria-label="Send">Envoyer</button>
           </form>
         </div>
       </div>
-      <div class="lightbox">
-        <button class="lightbox_close">Fermer</button>
-        <button class="lightbox_next" id="arrows">Suivant</button>
-        <button class="lightbox_prev" id="arrows">Précédent</button>
+      <div class="lightbox" role="Media gallery">
+        <button class="lightbox_close" aria-label="close the gallery">Fermer</button>
+        <button class="lightbox_next" id="arrows" aria-label="Next picture">Suivant</button>
+        <button class="lightbox_prev" id="arrows" aria-label="Previous picture">Précédent</button>
         <div class="lightbox_content"></div>
       </div>
     </main>
@@ -83,5 +83,6 @@
     <script src="/scripts/factories/mediasFactory.js"></script>
     <script src="/scripts/utils/lightbox.js"></script>
     <script src="/scripts/utils/filter.js"></script>
+    <script src="/scripts/utils/likes.js"></script>
   </body>
 </html>

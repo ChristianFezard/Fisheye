@@ -1,14 +1,13 @@
 function filterMedias(optionValue, optionArray){
-
     //Etablissement des effets d'action
 
     if(optionValue === "Date"){
         return perDate(optionArray);
     }
-    if(optionArray === "Popularité"){
+    if(optionValue === "Popularité"){
         return perLike(optionArray);
     }
-    if(optionArray === "Titre"){
+    if(optionValue === "Titre"){
         return perTitle(optionArray);
     }
 

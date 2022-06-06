@@ -12,10 +12,11 @@ document.addEventListener("DOMContentLoaded", ()=>{
             return response.json();
       }).then((result)=>{
             displayPhotographerInfos(result.photographers);
-            getPhotographerMedia(result.media);
-            console.log(result.media);
+            const photographerMedias = getPhotographerMediaById(result.media);
+            displayMedias(photographerMedias);
+            
 
-                        // affichage des filtres
+            // affichage des filtres
             
             let isOpen = false;
             const selectOptions = document.querySelector("#select-block-options");
@@ -49,8 +50,7 @@ document.addEventListener("DOMContentLoaded", ()=>{
                                 const buttonText = button.textContent;                         
                                 button.innerHTML = firstButtonText.textContent;                         
                                 firstButtonText.innerHTML = buttonText;
-                                filterMedias(buttonText, result.media); 
-                                console.log(filterMedias);                                 
+                                displayMedias((filterMedias(buttonText, photographerMedias)));                               
                                 return closeSelect();               
                             };               
                         });
@@ -94,19 +94,17 @@ document.addEventListener("DOMContentLoaded", ()=>{
 
             // afficher le nom dans la modal contact
 
-            const contactHead = document.querySelector('#contact_me');
-            const contactName = document.createElement('p');
-            contactHead.appendChild(contactName);
+            const contactName = document.querySelector('.photographer_name');
             contactName.textContent = photographerInfos?.name;
       }
 
     // fonction récuperation du tableau [media] lié a l'id du photographe
 
-      function getPhotographerMedia(mediaArray){
+      function getPhotographerMediaById(mediaArray){
             const photographerMedia = mediaArray.filter((media)=>{
                  return Number(urlId) === Number(media.photographerId);
             });
-            return displayMedias(photographerMedia);           
+            return photographerMedia;           
       }
       
       // fonction affichage des [media] via DOMbuild
@@ -119,12 +117,15 @@ document.addEventListener("DOMContentLoaded", ()=>{
                     ${mediasFactory(media)}
                     <div class="bottom_line">
                     <span>${media.title}</span>
-                    <button class="photo_like">${media.likes}<i class="fas fa-heart"></i></button>
+                    <div class="photo_like"><button class="photo_like_btn">${media.likes}<i class="fas fa-heart"></i></button></div>
                     </div>
                  </div>
                  `;
             });
             document.querySelector(".media_gallery").innerHTML = MEDIAHTML;
+
+      // function like
+      
 
       // Lightbox
 
@@ -134,26 +135,9 @@ document.addEventListener("DOMContentLoaded", ()=>{
                 lightBox(photographerMediaArray, index);
                 });
             });
-      };
+        };
 });
 
 
-// fonction like de la page
 
-async function likeMedia() {
-
-    //Recuparation des boutons like + la zone total des likes
-
-    const likeIt = document.querySelectorAll("photo_like");
-    const totalBottomLike = document.querySelector(".popularity");
-
-    likeIt.forEach(function(heart){
-        heart.addEventListener("click", function(){
-        let likeNum = heart.parentNode.children[0];
-        likeNum.innerHTML = parseInt(likeNum.innerHTML) + 1;
-        totalBottomLike.innerHTML = parseInt(totalBottomLike.innerHTML) + 1;
-        });
-    });
-}
-likeMedia();
 

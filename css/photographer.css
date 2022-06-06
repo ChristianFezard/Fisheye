@@ -33,6 +33,8 @@ body {
     justify-content: space-between;
 }
 
+/* CSS Modal */
+
 .contact_button {
     font-size: 20px;
     font-weight: bold;
@@ -47,6 +49,13 @@ body {
     margin-right: 150px;
     align-self: center;
     margin: 0 auto;
+    transition: 0.3s;
+}
+
+.contact_button:hover,
+.contact_button:focus{
+    color: black;
+    background-color: #DB8876;
 }
 
 .modal {
@@ -80,6 +89,14 @@ body {
     font-size: 50px;
     font-weight: normal;
     text-align: center;
+    margin: 0;
+}
+
+.photographer_name{
+    font-size: 50px;
+    margin: 0;
+    align-self: flex-start;
+    margin-bottom: 20px;
 }
 
 form {
@@ -109,6 +126,14 @@ form input {
     border-radius: 5px;
 }
 
+.insert_message{
+    height: 120px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    padding: 8px;
+    width: 100%;
+}
+
 /*integration html + css*/
 
 .name{
@@ -123,6 +148,16 @@ form input {
     display: inline-block;
     justify-content: center;
     align-items: flex-end;
+}
+
+.photo_like_btn{
+    border: none;
+    background-color: #FFF;
+    color: #901C1C;
+    font-family: "DM Sans", sans-serif;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
 }
 
 h1{
@@ -146,15 +181,15 @@ h1{
 }
 
 .select-option{
-    width:120px;
-    border:none;
-    background:#911C1C;
-    color:#ffffff;
-    position:relative;
-    display:block;
-    border:1px solid #ffffff;
-    cursor:pointer;
-    height:60px;
+    width: 120px;
+    border: none;
+    background: #911C1C;
+    color: #ffffff;
+    position: relative;
+    display: block;
+    border: 0.5px solid #ffffff;
+    cursor: pointer;
+    height: 60px;
     font-weight: bold;
     border-radius: 5px;
 }
@@ -162,7 +197,7 @@ h1{
 #select-block-options{
   
     display:none;
-  
+    position:absolute;
 }
 .list{
     margin-left: 20px;
@@ -230,7 +265,7 @@ h1{
 }
 
 .fas{
-    margin-left: 5px;
+    font-size: 16px;
 }
 
 /***************CSS LIGHTBOX*************/
@@ -312,7 +347,6 @@ h1{
     color: #901C1C;
     font-size: x-large;
     font-weight: bold;
-    text-align: left;
 }
 
 @keyframes lightBoxIn{

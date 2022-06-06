@@ -28,7 +28,6 @@ function lightBox(contentArray, mediaIndex){
                 return next();
             }
                 return prev();
-            
         });
     });
 
