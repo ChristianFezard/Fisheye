@@ -91,7 +91,7 @@ function lightBox(contentArray, mediaIndex){
         `;
         if(media.video !== undefined){
             const lightImage = document.querySelector(".lightbox_image");
-            lightImage.document.querySelector('#lightbox_video').setAttribute("controls", true);
+            lightImage.querySelector('#lightbox_video').setAttribute("controls", true);
         }
         return false;
     }

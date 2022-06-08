@@ -117,7 +117,7 @@ document.addEventListener("DOMContentLoaded", ()=>{
                     ${mediasFactory(media)}
                     <div class="bottom_line">
                     <span>${media.title}</span>
-                    <div class="photo_like"><button class="photo_like_btn">${media.likes}<i class="fas fa-heart"></i></button></div>
+                    <div class="photo_like"><button class="photo_like_btn">${media.likes}</button><i class="fas fa-heart"></i></div>
                     </div>
                  </div>
                  `;
@@ -134,6 +134,15 @@ document.addEventListener("DOMContentLoaded", ()=>{
                 media.addEventListener("click", ()=>{
                 lightBox(photographerMediaArray, index);
                 });
+            });
+                  //acces a la lightbox via le clavier
+
+            document.addEventListener("keydown", (event)=>{
+                if (event.key === "Enter") {
+                    if(event.target?.classList[1] === ".article_media"){
+                    lightBox(photographerMediaArray, index);
+                    }
+                }
             });
         };
 });

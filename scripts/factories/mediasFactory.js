@@ -12,7 +12,7 @@ function mediasFactory(media){
 
 function createImage(data){
 
-     return `<img class="article_media" src="/assets/images/Sample Photos/Medias/${data.image}" tabindex="0" alt="${data.title}" />`;
+     return `<img class="article_media" id="lightbox_picture" src="/assets/images/Sample Photos/Medias/${data.image}" tabindex="0" alt="${data.title}" />`;
 
 }
 
