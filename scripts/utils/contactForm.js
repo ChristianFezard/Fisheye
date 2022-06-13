@@ -50,19 +50,6 @@ function validEmail() {
     errorEmail.textContent ='Veuillez entrer une adresse email valide.';
 };
 
-// Vérifier le champ Message
-
-function validMessage() {
-    const message = document.getElementById("message").value;
-    const errorMessage = document.querySelector("#error-message-message");
-
-    if(message <= 0) {
-        errorMessage.textContent = "Veuillez entrer un message";
-    }
-    errorMessage.textContent = "";
-    return true;
-}
-
 // Envoi du formulaire
 
 form.addEventListener("submit", function(e){
@@ -71,10 +58,17 @@ form.addEventListener("submit", function(e){
     const checkValidFirstName = validFirstName();
     const checkValidLastName = validLastName();
     const checkValidEmail = validEmail();
-    const checkValidMessage = validMessage();
 
-    if(checkValidFirstName === true && checkValidLastName === true && checkValidEmail === true && checkValidMessage === true){
+    if(checkValidFirstName === true && checkValidLastName === true && checkValidEmail === true){
         alert('Message envoyé');
-        modal.style.display = "none";
+        return closeModal();
     }
 });
+
+// fermeture et validation au clavier
+
+window.addEventListener("keydown",(event)=>{
+    if (event.key == "Escape"){
+        return closeModal();
+    }
+})

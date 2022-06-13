@@ -18,7 +18,6 @@
     <main id="main">
       <div class="photograph-header" id="header">
         <div class="photographer_description" id="profile">
-          
         </div>
         <button class="contact_button" onclick="displayModal()" aria-haspopup="Filter Option" aria-expanded="false">Contactez-moi</button>
       </div>
@@ -41,7 +40,7 @@
       <div class="heart_n_price">
         <p class="popularity">
           <span id="count"></span>
-          <i class="fas fa-heart" class="heart_bottom"></i>
+          <i class="fas fa-heart"></i>
         </p>
         <div class="price"></div>
       </div>
@@ -54,27 +53,27 @@
           <p class="photographer_name"></p>
           <form name="contact" method="post" id="contactForm" action="photographer.html">
             <div>
-              <label for="first name">Prénom</label>
+              <label for="first_name">Prénom</label>
               <input id="first_name" type="text" aria-label="First name"/>
               <span id="error-message-first-name" class="error-message"></span>
-              <label for="last name">Nom</label>
+              <label for="last_name">Nom</label>
               <input id="last_name" type="text" aria-label="Last name"/>
               <span id="error-message-last-name" class="error-message"></span>
               <label for="email">Email</label>
               <input id="email" type="email" aria-label="Email"/>
               <span id="error-message-email" class="error-message"></span>
-              <label for="textarea">Votre message</label>
+              <label for="message">Votre message</label>
               <textarea id="message" class="insert_message" type="text" cols="45" rows="5" aria-labelledby="Your message"></textarea>
-              <span id="error-message-message" class="error-message"></span>
+              <span id="error-message-msg" class="error-message"></span>
             </div>
-            <button type="submit" class="contact_button" aria-label="Send">Envoyer</button>
+            <button type="submit" class="register_button" aria-label="Send">Envoyer</button>
           </form>
         </div>
       </div>
       <div class="lightbox" role="Media gallery">
         <button class="lightbox_close" aria-label="close the gallery">Fermer</button>
-        <button class="lightbox_next" id="arrows" aria-label="Next picture">Suivant</button>
-        <button class="lightbox_prev" id="arrows" aria-label="Previous picture">Précédent</button>
+        <button class="lightbox_next arrows" aria-label="Next picture">Suivant</button>
+        <button class="lightbox_prev arrows" aria-label="Previous picture">Précédent</button>
         <div class="lightbox_content"></div>
       </div>
     </main>

@@ -21,7 +21,7 @@ function lightBox(contentArray, mediaIndex){
 
     // assignation de focntion a chaque flêche
 
-    const arrows = document.querySelectorAll('#arrows');
+    const arrows = document.querySelectorAll('.arrows');
     arrows.forEach((arrow)=>{
         arrow.addEventListener("click", ()=>{
             if(arrow.classList.contains("lightbox_next") === true){

@@ -73,6 +73,7 @@ document.addEventListener("DOMContentLoaded", ()=>{
             const nameTitle = document.createElement('h1');
             description.appendChild(nameTitle);           
             nameTitle.textContent = photographerInfos?.name;
+            nameTitle.classList.add("name");
             const location = document.createElement('p');
             description.appendChild(location);
             location.textContent = photographerInfos?.city+", "+photographerInfos?.country;
@@ -145,19 +146,11 @@ document.addEventListener("DOMContentLoaded", ()=>{
                   //acces a la lightbox via le clavier
 
                   document.addEventListener("keydown", (event)=>{
-                   
-
-                    if (event.key === "Enter") {
-                        
+                    if (event.key === "Enter") {         
                         if(event.target?.classList[0] === "article_media"){
                             const mediaIndex = photographerMediaArray.findIndex((media)=>{
- 
                                 return media.title === event.target?.dataset?.alttxt;
-        
                          });
-        
-                         
-        
                                 return lightBox(photographerMediaArray, mediaIndex);
         
                         }

@@ -31,11 +31,13 @@ body {
     padding: 50px;
     display: flex;
     justify-content: space-between;
+    position: relative;
 }
 
 /* CSS Modal */
 
-.contact_button {
+.contact_button,
+.register_button {
     font-size: 20px;
     font-weight: bold;
     color: white;
@@ -47,9 +49,15 @@ body {
     border-radius: 5px;
     cursor: pointer;
     margin-right: 150px;
+}
+
+.contact_button{
     align-self: center;
     margin: 0 auto;
     transition: 0.3s;
+    position: absolute;
+    top: 40%;
+    right: 45%;
 }
 
 .contact_button:hover,
@@ -194,6 +202,8 @@ h1{
     border-radius: 5px;
 }
 
+
+
 #select-block-options{
   
     display:none;
@@ -238,6 +248,7 @@ h1{
 
 .heart_media{
     margin-left: 5px;
+    cursor: pointer;
 }
 
 .heart_media:hover,
@@ -270,7 +281,6 @@ h1{
     font-weight: bold;
     font-family: "DM Sans", sans-serif;
     font-size: 16px;
-    cursor: pointer;
 }
 
 .fas{
