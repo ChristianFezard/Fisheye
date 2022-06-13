@@ -236,6 +236,15 @@ h1{
     display: inline-block;
 }
 
+.heart_media{
+    margin-left: 5px;
+}
+
+.heart_media:hover,
+.heart_media:focus{
+    transform: scale(80%);
+}
+
 .heart_n_price{
     position: fixed;
     z-index: 1;

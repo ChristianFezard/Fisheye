@@ -111,21 +111,28 @@ document.addEventListener("DOMContentLoaded", ()=>{
 
       function displayMedias(photographerMediaArray){
             let MEDIAHTML = "";
+            let sum = 0;
             photographerMediaArray.forEach((media)=>{
+                 sum = Number(sum) + Number(`${media.likes}`);
                  MEDIAHTML+= `               
                  <div class="media_cards">
                     ${mediasFactory(media)}
                     <div class="bottom_line">
                     <span>${media.title}</span>
-                    <div class="photo_like"><button class="photo_like_btn">${media.likes}</button><i class="fas fa-heart"></i></div>
+                    <div class="photo_like"><span>${media.likes}</span><i class="fas fa-heart heart_media" tabindex="0"></i></div>
                     </div>
                  </div>
                  `;
             });
             document.querySelector(".media_gallery").innerHTML = MEDIAHTML;
 
+            // Récuperation des likes
+
+            document.querySelector("#count").textContent = sum;
+
       // function like
       
+      likeMedia();
 
       // Lightbox
 
@@ -137,14 +144,27 @@ document.addEventListener("DOMContentLoaded", ()=>{
             });
                   //acces a la lightbox via le clavier
 
-            document.addEventListener("keydown", (event)=>{
-                if (event.key === "Enter") {
-                    if(event.target?.classList[1] === ".article_media"){
-                    lightBox(photographerMediaArray, index);
+                  document.addEventListener("keydown", (event)=>{
+                   
+
+                    if (event.key === "Enter") {
+                        
+                        if(event.target?.classList[0] === "article_media"){
+                            const mediaIndex = photographerMediaArray.findIndex((media)=>{
+ 
+                                return media.title === event.target?.dataset?.alttxt;
+        
+                         });
+        
+                         
+        
+                                return lightBox(photographerMediaArray, mediaIndex);
+        
+                        }
                     }
-                }
-            });
+                });
         };
+        
 });
 
 

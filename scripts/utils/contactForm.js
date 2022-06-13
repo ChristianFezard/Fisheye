@@ -10,7 +10,7 @@ function closeModal() {
 
 let form = document.querySelector('#contactForm');
 
-//validate first name
+//Vérifier le champ Prénom
 
 function validFirstName() {
     const firstNameValue = document.getElementById('first_name').value;
@@ -23,7 +23,7 @@ function validFirstName() {
     return true;
     };
 
-// Validate last name
+// Vérifier le champ Nom
 
 function validLastName() {
     const lastNameValue = document.getElementById('last_name').value;
@@ -36,7 +36,7 @@ function validLastName() {
     return true;
     };
 
-// Validate Email
+// Vérifier le champ Email
 
 function validEmail() {
     const email = document.getElementById("email").value;
@@ -50,7 +50,20 @@ function validEmail() {
     errorEmail.textContent ='Veuillez entrer une adresse email valide.';
 };
 
-// form submission
+// Vérifier le champ Message
+
+function validMessage() {
+    const message = document.getElementById("message").value;
+    const errorMessage = document.querySelector("#error-message-message");
+
+    if(message <= 0) {
+        errorMessage.textContent = "Veuillez entrer un message";
+    }
+    errorMessage.textContent = "";
+    return true;
+}
+
+// Envoi du formulaire
 
 form.addEventListener("submit", function(e){
     e.preventDefault();
@@ -58,9 +71,10 @@ form.addEventListener("submit", function(e){
     const checkValidFirstName = validFirstName();
     const checkValidLastName = validLastName();
     const checkValidEmail = validEmail();
+    const checkValidMessage = validMessage();
 
-    if(checkValidFirstName === true && checkValidLastName === true && checkValidEmail){
+    if(checkValidFirstName === true && checkValidLastName === true && checkValidEmail === true && checkValidMessage === true){
         alert('Message envoyé');
+        modal.style.display = "none";
     }
-    alert("C'est mort!!!");
 });
