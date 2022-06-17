@@ -7,5 +7,9 @@
         "ecmaVersion": "latest"
     },
     "rules": {
+        "double" : true,
+        "single" : true,
+        "backtick" : true,
+        "indent": ["warn", 2, {"switchcase": 1}]
     }
 }
