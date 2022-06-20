@@ -14,6 +14,7 @@ let form = document.querySelector('#contactForm');
 
 function validFirstName() {
     const firstNameValue = document.getElementById('first_name').value;
+    console.log("prénom : " + firstNameValue);
     const errorFirstName = document.querySelector("#error-message-first-name");
 
     if(firstNameValue.length < 2) {
@@ -27,6 +28,7 @@ function validFirstName() {
 
 function validLastName() {
     const lastNameValue = document.getElementById('last_name').value;
+    console.log("nom : " + lastNameValue);
     const errorLastName = document.querySelector("#error-message-last-name");
     
     if(lastNameValue.length < 2) {
@@ -40,6 +42,7 @@ function validLastName() {
 
 function validEmail() {
     const email = document.getElementById("email").value;
+    console.log("adresse mail : " + email);
     const errorEmail = document.querySelector("#error-message-email");
     let emailRegExp = RegExp('^[a-zA-Z0-9.-_]+[@]{1}[a-zA-Z0-9.-_]+[.]{1}[a-z]{2,10}$');
     
