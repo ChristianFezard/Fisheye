@@ -219,8 +219,8 @@ h1{
 }
 
 .media_gallery{
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+    display: flex;
+    flex-wrap: wrap;
     margin: 50px 100px;
     gap: 100px;
 }
