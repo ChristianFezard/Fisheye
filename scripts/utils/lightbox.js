@@ -38,17 +38,16 @@ function lightBox(contentArray, mediaIndex){
     // image suivante
 
     function next(){
-        
         const title = document.querySelector('.lightbox_media_title').textContent;
-        
         const nIndex = contentArray.findIndex((media)=>{
             return media.title === title;
         });
-
+    
         if (nIndex < contentArray.length - 1) {
             return lightHTML(contentArray[nIndex + 1]);
+        } else {
+            return lightHTML(contentArray[0]);
         }
-        return false;
     }
 
     // image précédente
@@ -62,7 +61,7 @@ function lightBox(contentArray, mediaIndex){
         if (nIndex > 0){
             return lightHTML(contentArray[nIndex - 1]);
         }
-        return false;
+        return lightHTML(contentArray[contentArray.length - 1]);
     }
 
     // Gestion au clavier

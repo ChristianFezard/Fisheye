@@ -202,13 +202,11 @@ h1{
     border-radius: 5px;
 }
 
-
-
-#select-block-options{
-  
+#select-block-options{  
     display:none;
     position:absolute;
 }
+
 .list{
     margin-left: 20px;
     color: white;

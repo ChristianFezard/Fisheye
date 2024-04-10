@@ -1,5 +1,9 @@
 @import url("photographer.css");
 
+*,::after,::before{
+    box-sizing: border-box;
+}
+
 body {
     font-family: "DM Sans", sans-serif;
     margin: 0;
@@ -42,7 +46,7 @@ h1 {
 
 .photographer_section article h2 {
     color: #D3573C;
-    font-size: 36px;
+    font-size: 30px;
     margin-bottom: 0;
 }
 
@@ -68,4 +72,41 @@ h1 {
 }
 .price{
     color: grey;
+}
+
+.city, .quote, .price {
+    font-size: 14px;
+}
+
+@media (min-width: 768px) and (max-width: 991px){
+    .photographer_section article img{
+        height: 150px;
+        width: 150px;
+    }
+
+    .photographer_section article h2 {
+        font-size: 24px;
+    }
+
+    .photographer_section {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media (max-width: 767px) {
+    header {
+        flex-direction: column;
+    }
+
+    h1 {
+        margin-right: 0;
+    }
+
+    .logo {
+        margin: 20px;
+    }
+
+    .photographer_section {
+        grid-template-columns: 1fr;
+    }
 }
