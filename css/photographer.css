@@ -309,7 +309,7 @@ h1{
 .lightbox_next,
 .lightbox_prev{
     border: none;
-    background: url(/assets/icons/arrow.svg) center center / 30px 48px no-repeat;
+    background: url(../assets/icons/arrow.svg) center center / 30px 48px no-repeat;
     width: 50px;
     height: 100%;
     position: fixed;
@@ -327,7 +327,7 @@ h1{
 
 .lightbox_close{
     border: none;
-    background: url(/assets/icons/redclose.svg) center center / 42px 42px;
+    background: url(../assets/icons/redclose.svg) center center / 42px 42px;
     width: 25px;
     height: 25px;
     position: fixed;
